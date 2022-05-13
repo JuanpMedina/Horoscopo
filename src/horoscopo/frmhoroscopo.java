@@ -45,7 +45,7 @@ public class frmhoroscopo extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         categoria = new javax.swing.JLabel();
         lblIdentificacion = new javax.swing.JLabel();
-        txtnombre1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         lblDulceFavorito = new javax.swing.JLabel();
         txtDulceFavorito = new javax.swing.JTextField();
         lblAñoNacimiento = new javax.swing.JLabel();
@@ -116,9 +116,9 @@ public class frmhoroscopo extends javax.swing.JFrame {
 
         lblIdentificacion.setText("Identificación:");
 
-        txtnombre1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnombre1ActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
 
@@ -176,7 +176,7 @@ public class frmhoroscopo extends javax.swing.JFrame {
                                                 .addComponent(jLabel1)
                                                 .addGap(50, 50, 50)))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtDulceFavorito, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -216,7 +216,7 @@ public class frmhoroscopo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDulceFavorito)
@@ -226,9 +226,10 @@ public class frmhoroscopo extends javax.swing.JFrame {
                             .addComponent(lblAñoNacimiento)
                             .addComponent(txtAñoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtdia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtdia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -264,40 +265,66 @@ public class frmhoroscopo extends javax.swing.JFrame {
 
     private void btncalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalcularActionPerformed
         // TODO add your handling code here:
-        int  año = Integer.parseInt(txtAñoNacimiento.getText());
-        int  dia = Integer.parseInt(txtdia.getText());
-        String mes = (String)combomes.getSelectedItem();
+        boolean validacion = true;
         
-        Usuario usuario = new Usuario(
-                txtIdentificacion.getText(),
-                txtnombre1.getText(),
-                mes.toLowerCase(),
-                txtDulceFavorito.getText(),
-                dia,
-                año
-        );
+        if(txtIdentificacion.getText().length() < 2 || txtIdentificacion.getText().length() > 10){
+            resultado.setText("¡TIENES UN ERROR EN IDENTIFICACION!");
+            validacion = false;
+        }
         
-        Zodiaco zodiaco = new Zodiaco();
+        if(txtNombre.getText().length() < 5 || txtNombre.getText().length() > 150){
+            resultado.setText("¡TIENES UN ERROR EN NOMBRE!");
+            validacion = false;
+        }
         
-        mensaje.setText(zodiaco.fraseHoroscopo());
+        if(validacion){
+            int  año = Integer.parseInt(txtAñoNacimiento.getText());
+            int  dia = Integer.parseInt(txtdia.getText());
+            String mes = (String)combomes.getSelectedItem();
+
+            Usuario usuario = new Usuario(
+                    txtIdentificacion.getText(),
+                    txtNombre.getText(),
+                    mes.toLowerCase(),
+                    txtDulceFavorito.getText(),
+                    dia,
+                    año
+            );
+
+            Zodiaco zodiaco = new Zodiaco();
+
+            mensaje.setText(zodiaco.fraseHoroscopo());
+
+            //calcular edad entre niño y adulto Esto se va para clase horoscopo
+            if (usuario.esMayor()) {
+                categoria.setText("Adulto");
+                regalo.setText("<html>Libro: <p> " + zodiaco.generarRegalo(usuario.esMayor())+ "<p><html>");
+            } else {
+                categoria.setText("Niño");
+                regalo.setText("<html>Dulce: <p> " + zodiaco.generarRegalo(usuario.esMayor())+ "<p><html>");
+            }        
+
+            String text = "<html>ID: " + usuario.getIdentificacion() + "<p>" +
+                "<html>Nombre: " + usuario.getNombre() + "<p>\n" +
+                "<html>Fecha nacimiento: " + usuario.getDiaNacimiento() + "/" + usuario.mesAMesNumero() + "/" + usuario.getAñoNacimiento() + "<p>\n" +
+                "<html>Edad: " + usuario.calcularEdad() + " años <p>\n" +
+                "<html>Dulce favorito: " + usuario.getDulceFavorito() + "<p>\n" + 
+                "<html>Signo zodiacal: " + zodiaco.calcularSignoZodiacal(dia, mes) + "<p>";
+
+            resultado.setText(text);
+        }
         
-        //calcular edad entre niño y adulto Esto se va para clase horoscopo
-        if (usuario.esMayor()) {
-            categoria.setText("Adulto");
-            regalo.setText("<html>Libro: <p> El codigo de Davinci <p><html>");
-        } else {
-            categoria.setText("Niño");
-            regalo.setText("<html>Dulce: <p> Chocolate <p><html>");
-        }        
         
-        String text = "<html>ID: " + usuario.getIdentificacion() + "<p>" +
-            "<html>Nombre: " + usuario.getNombre() + "<p>\n" +
-            "<html>Fecha nacimiento: " + usuario.getDiaNacimiento() + "/" + usuario.mesAMesNumero() + "/" + usuario.getAñoNacimiento() + "<p>\n" +
-            "<html>Edad: " + usuario.calcularEdad() + " años <p>\n" +
-            "<html>Dulce favorito: " + usuario.getDulceFavorito() + "<p>\n" + 
-            "<html>Signo zodiacal: " + zodiaco.calcularSignoZodiacal(dia, mes) + "<p>";
         
-        resultado.setText(text);        
+        
+        
+        
+        
+        
+        
+        
+        
+                
     }//GEN-LAST:event_btncalcularActionPerformed
 
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
@@ -305,7 +332,7 @@ public class frmhoroscopo extends javax.swing.JFrame {
         txtIdentificacion.setText("");
         txtDulceFavorito.setText("");
         txtAñoNacimiento.setText("");
-        txtnombre1.setText("");
+        txtNombre.setText("");
         txtdia.setText("");
         categoria.setText("");
         combomes.setSelectedIndex(0);
@@ -327,9 +354,9 @@ public class frmhoroscopo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_combomesActionPerformed
 
-    private void txtnombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombre1ActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtnombre1ActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     private void txtDulceFavoritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDulceFavoritoActionPerformed
         // TODO add your handling code here:
@@ -394,8 +421,8 @@ public class frmhoroscopo extends javax.swing.JFrame {
     private javax.swing.JTextField txtAñoNacimiento;
     private javax.swing.JTextField txtDulceFavorito;
     private javax.swing.JTextField txtIdentificacion;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtdia;
-    private javax.swing.JTextField txtnombre1;
     // End of variables declaration//GEN-END:variables
 
 }

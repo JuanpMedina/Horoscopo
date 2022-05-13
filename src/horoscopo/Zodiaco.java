@@ -5,8 +5,6 @@
  */
 package horoscopo;
 
-import java.awt.List;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -35,8 +33,44 @@ public class Zodiaco {
         "Las ventas dependen de la actitud del vendedor, no de la actitud del potencial cliente.",
         "Ser valiente no quiere decir que no tengas miedo, es actuar a pesar de éste."
     };
-    private String [] regalosNiño = {""};
-    private String [] regalosAdulto = {""};
+    private final String [] regalosNiño = {
+        "Caramelo",
+        "Menta",
+        "Chocolate",
+        "BomBomBum",
+        "Barrilete",
+        "Helado",
+        "Gomitas",
+        "Chicle",
+        "Alfajor",
+        "Donuts",
+        "Quipitos",
+        "Quiebra muelas"
+    };
+    
+    private final String [] regalosAdulto = {
+        "Una arruga en el tiempo",
+        "A sangre fría",
+        "Hijos de la medianoche",
+        "El Principito",
+        "Cumbres borrascosas",
+        "El corazón de las tinieblas",
+        "Lolita",
+        "Fortunata y Jacinta",
+        "El extranjero",
+        "La dama de blanco",
+        "La metamorfosis",
+        "Grandes esperanzas",
+        "Fahrenheit 451",
+        "La historia interminable",
+        "El señor de las moscas",
+        "El Gran Gatsby",
+        "Las uvas de la ira",
+        "Nuestra señora de París",
+        "El nombre de la rosa",
+        "Las ciudades invisibles",
+        "Crimen y castigo"
+    };
 
     public String fraseHoroscopo(){
         Random rd = new Random();
@@ -70,6 +104,16 @@ public class Zodiaco {
             return ("Piscis");
         }else{
             return "DESCONOCIDO";
+        }
+    }
+    
+    public String generarRegalo(boolean esMayor){
+        if(esMayor){
+            Random rd = new Random();
+            return this.regalosAdulto[rd.nextInt((this.regalosAdulto.length - 0) + 0) + 0];
+        }else{
+            Random rd = new Random();
+            return this.regalosNiño[rd.nextInt((this.regalosNiño.length - 0) + 0) + 0];
         }
     }
     
