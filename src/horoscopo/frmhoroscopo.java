@@ -307,21 +307,29 @@ public class frmhoroscopo extends javax.swing.JFrame {
 
             mensaje.setText(zodiaco.fraseHoroscopo());
 
+            String text = "";
+            
             //calcular edad entre niño y adulto Esto se va para clase horoscopo
             if (usuario.esMayor()) {
                 categoria.setText("Adulto");
                 regalo.setText("<html>Libro: <p> " + zodiaco.generarRegalo(usuario.esMayor())+ "<p><html>");
+                text = "<html>ID: " + usuario.getIdentificacion() + "<p>" +
+                "<html>Nombre: " + usuario.getNombre() + "<p>\n" +
+                "<html>Fecha nacimiento: " + usuario.getDiaNacimiento() + "/" + usuario.mesAMesNumero() + "/" + usuario.getAñoNacimiento() + "<p>\n" +
+                "<html>Edad: " + usuario.calcularEdad() + " años <p>\n" +
+                "<html>Libro favorito: " + usuario.getDulceFavorito() + "<p>\n" + 
+                "<html>Signo zodiacal: " + zodiaco.calcularSignoZodiacal(dia, mes) + "<p>";
             } else {
                 categoria.setText("Niño");
                 regalo.setText("<html>Dulce: <p> " + zodiaco.generarRegalo(usuario.esMayor())+ "<p><html>");
-            }        
-
-            String text = "<html>ID: " + usuario.getIdentificacion() + "<p>" +
+                text = "<html>ID: " + usuario.getIdentificacion() + "<p>" +
                 "<html>Nombre: " + usuario.getNombre() + "<p>\n" +
                 "<html>Fecha nacimiento: " + usuario.getDiaNacimiento() + "/" + usuario.mesAMesNumero() + "/" + usuario.getAñoNacimiento() + "<p>\n" +
                 "<html>Edad: " + usuario.calcularEdad() + " años <p>\n" +
                 "<html>Dulce favorito: " + usuario.getDulceFavorito() + "<p>\n" + 
                 "<html>Signo zodiacal: " + zodiaco.calcularSignoZodiacal(dia, mes) + "<p>";
+            }
+            
 
             resultado.setText(text);
         }
