@@ -5,40 +5,72 @@
  */
 package horoscopo;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+
 /**
  *
  * @author User
  */
-public class Usuario implements ZodiacoRepositorio{
+public class Usuario{
     private String identificacion;
     private String nombre;
-    private int edad;
-    private int diaNacimiento;
     private String mesNacimiento;
+    private String dulceFavorito;
+    private int diaNacimiento;
+    private int añoNacimiento;
 
-    public Usuario(String identificacion, String nombre, int edad, int diaNacimiento, String mesNacimiento) {
+    public Usuario(String identificacion, String nombre, String mesNacimiento, String dulceFavorito, int diaNacimiento, int añoNacimiento) {
         this.identificacion = identificacion;
         this.nombre = nombre;
-        this.edad = edad;
-        this.diaNacimiento = diaNacimiento;
         this.mesNacimiento = mesNacimiento;
+        this.dulceFavorito = dulceFavorito;
+        this.diaNacimiento = diaNacimiento;
+        this.añoNacimiento = añoNacimiento;
     }
     
-    @Override
-    public String calcularSigno(int dia, String mes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int mesAMesNumero(){
+        switch(this.mesNacimiento){
+            case "enero":
+                return 1;
+            case "febrero":
+                return 2;
+            case "marzo":
+                return 3;
+            case "abril":
+                return 4;
+            case "mayo":
+                return 5;
+            case "junio":
+                return 6;
+            case "julio":
+                return 7;
+            case "agosto":
+                return 8;
+            case "septiembre":
+                return 9;
+            case "octubre":
+                return 10;
+            case "noviembre":
+                return 11;
+            case "diciembre":
+                return 12;
+            default:
+                System.out.println("El mes ingresado no se reconoce como un mes valido, verifique por favor");
+                return 0;
+        }
+    }
+    
+    public int calcularEdad(){
+        Period edad  = Period.between(LocalDate.of(this.añoNacimiento, mesAMesNumero(), this.diaNacimiento), LocalDate.now());
+        return edad.getYears();
     }
 
-    @Override
-    public boolean esMayorDeEdad(int edad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean esMayor(){
+        int edad = calcularEdad();
+        return edad > 12;
     }
-
-    @Override
-    public String determinarRegalo(boolean esMayor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
- 
     
     public String getIdentificacion() {
         return identificacion;
@@ -56,12 +88,20 @@ public class Usuario implements ZodiacoRepositorio{
         this.nombre = nombre;
     }
 
-    public int getEdad() {
-        return edad;
+    public String getMesNacimiento() {
+        return mesNacimiento;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setMesNacimiento(String mesNacimiento) {
+        this.mesNacimiento = mesNacimiento;
+    }
+
+    public String getDulceFavorito() {
+        return dulceFavorito;
+    }
+
+    public void setDulceFavorito(String dulceFavorito) {
+        this.dulceFavorito = dulceFavorito;
     }
 
     public int getDiaNacimiento() {
@@ -72,11 +112,13 @@ public class Usuario implements ZodiacoRepositorio{
         this.diaNacimiento = diaNacimiento;
     }
 
-    public String getMesNacimiento() {
-        return mesNacimiento;
+    public int getAñoNacimiento() {
+        return añoNacimiento;
     }
 
-    public void setMesNacimiento(String mesNacimiento) {
-        this.mesNacimiento = mesNacimiento;
+    public void setAñoNacimiento(int añoNacimiento) {
+        this.añoNacimiento = añoNacimiento;
     }
+    
+    
 }
