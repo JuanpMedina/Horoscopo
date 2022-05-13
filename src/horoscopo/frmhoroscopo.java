@@ -33,7 +33,7 @@ public class frmhoroscopo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtdia = new javax.swing.JTextField();
+        txtDia = new javax.swing.JTextField();
         txtIdentificacion = new javax.swing.JTextField();
         combomes = new javax.swing.JComboBox<>();
         btncalcular = new javax.swing.JButton();
@@ -66,9 +66,9 @@ public class frmhoroscopo extends javax.swing.JFrame {
 
         jLabel3.setText("Ingresar Mes:");
 
-        txtdia.addActionListener(new java.awt.event.ActionListener() {
+        txtDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtdiaActionPerformed(evt);
+                txtDiaActionPerformed(evt);
             }
         });
 
@@ -122,7 +122,7 @@ public class frmhoroscopo extends javax.swing.JFrame {
             }
         });
 
-        lblDulceFavorito.setText("Dulce Favorito:");
+        lblDulceFavorito.setText("Dulce o Libro Favorito:");
 
         txtDulceFavorito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,44 +160,44 @@ public class frmhoroscopo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblIdentificacion)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblDulceFavorito)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel1)
-                                                .addGap(50, 50, 50)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDulceFavorito, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(lblAñoNacimiento)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtAñoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel2)
-                                            .addGap(28, 28, 28)
-                                            .addComponent(txtdia, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel3)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(combomes, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(188, 188, 188))))
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblIdentificacion)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(lblDulceFavorito)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                        .addComponent(jLabel1)
+                                                        .addGap(50, 50, 50)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtDulceFavorito, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtAñoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(combomes, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,11 +226,10 @@ public class frmhoroscopo extends javax.swing.JFrame {
                             .addComponent(lblAñoNacimiento)
                             .addComponent(txtAñoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtdia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(combomes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -255,9 +254,9 @@ public class frmhoroscopo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtdiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdiaActionPerformed
+    private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtdiaActionPerformed
+    }//GEN-LAST:event_txtDiaActionPerformed
 
     private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed
         // TODO add your handling code here:
@@ -266,21 +265,42 @@ public class frmhoroscopo extends javax.swing.JFrame {
     private void btncalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalcularActionPerformed
         // TODO add your handling code here:
         boolean validacion = true;
+        String mes = (String)combomes.getSelectedItem();
+        int  año = Integer.parseInt(txtAñoNacimiento.getText());
+        int  dia = Integer.parseInt(txtDia.getText());
         
         if(txtIdentificacion.getText().length() < 2 || txtIdentificacion.getText().length() > 10){
-            resultado.setText("¡TIENES UN ERROR EN IDENTIFICACION!");
+            resultado.setText("<html>¡TIENES UN ERROR EN IDENTIFICACION! <p> <html>MIN CARACTERES: 2 <p> <html> MAX CARACTERES: 10 <p>");
             validacion = false;
         }
         
         if(txtNombre.getText().length() < 5 || txtNombre.getText().length() > 150){
-            resultado.setText("¡TIENES UN ERROR EN NOMBRE!");
+            resultado.setText("<html>¡TIENES UN ERROR EN NOMBRE! <p> <html>MIN CARACTERES: 5 <p> <html> MAX CARACTERES: 150 <p>");
+            validacion = false;
+        }
+        
+        if(txtDulceFavorito.getText().length() == 0){
+            resultado.setText("<html>¡TIENES UN ERROR EN DULCE O LIBRO FAVORITO! <p> <html>DEBES INGRESAR TU DULCE O LIBRO FAVORITO<p>");
+            validacion = false;
+        }
+        
+        if(txtAñoNacimiento.getText().length() != 4){
+            resultado.setText("<html>¡TIENES UN ERROR EN AÑO DE NACIMIENTO! <p> <html>Solo deben haber 4 caracteres<p>");
+            validacion = false;
+        }
+        
+        if(Integer.parseInt(txtDia.getText()) < 0 || Integer.parseInt(txtDia.getText()) > 31){
+            resultado.setText("<html>¡TIENES UN ERROR EN DIA DE NACIMIENTO! <p> <html>DIA DEL MES NO VALIDO<p>");
+            validacion = false;
+        }
+        
+        if(Integer.parseInt(txtDia.getText()) < 0 || Integer.parseInt(txtDia.getText()) > 28 && mes.toLowerCase().equals("febrero")){
+            resultado.setText("<html>¡TIENES UN ERROR EN DIA DE NACIMIENTO! <p> <html>DIA DEL MES NO VALIDO RECUERDA QUE ES FEBRERO :3<p>");
             validacion = false;
         }
         
         if(validacion){
-            int  año = Integer.parseInt(txtAñoNacimiento.getText());
-            int  dia = Integer.parseInt(txtdia.getText());
-            String mes = (String)combomes.getSelectedItem();
+
 
             Usuario usuario = new Usuario(
                     txtIdentificacion.getText(),
@@ -333,7 +353,7 @@ public class frmhoroscopo extends javax.swing.JFrame {
         txtDulceFavorito.setText("");
         txtAñoNacimiento.setText("");
         txtNombre.setText("");
-        txtdia.setText("");
+        txtDia.setText("");
         categoria.setText("");
         combomes.setSelectedIndex(0);
         resultado.setText("");
@@ -419,10 +439,10 @@ public class frmhoroscopo extends javax.swing.JFrame {
     private javax.swing.JLabel regalo;
     private javax.swing.JLabel resultado;
     private javax.swing.JTextField txtAñoNacimiento;
+    private javax.swing.JTextField txtDia;
     private javax.swing.JTextField txtDulceFavorito;
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtdia;
     // End of variables declaration//GEN-END:variables
 
 }
